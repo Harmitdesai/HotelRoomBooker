@@ -57,7 +57,6 @@ namespace ConsoleApp1
 
         public MultiCellBuffer() //constructor
         {
-            // add your implementation here
             this.usedCells = 0;
             this.multiCells = new Order[bufferSize];
 
@@ -69,7 +68,7 @@ namespace ConsoleApp1
         }
         public void SetOneCell(Order data)
         {
-            // add your implementation here
+          
             // Wait for a free cell
             // and lock the buffer for writing
             // to prevent other threads from writing
@@ -93,7 +92,7 @@ namespace ConsoleApp1
         }
         public Order GetOneCell()
         {
-            // add your implementation here
+           
             // Wait for an order to be available
             // and lock the buffer for reading
             // to prevent other threads from reading
@@ -131,7 +130,7 @@ namespace ConsoleApp1
         //parametrized constructor
         public Order(string senderId, long cardNo, double unitPrice, int quantity)
         {
-            // add your implementation here
+           
             // Initialize the order object with the provided parameters
             this.senderId = senderId;
             this.cardNo = cardNo;
@@ -141,22 +140,18 @@ namespace ConsoleApp1
         //getter methods
         public string getSenderId()
         {
-            // add your implementation here
             return this.senderId;
         }
         public long getCardNo()
         {
-            // add your implementation here
             return this.cardNo;
         }
         public double getUnitPrice()
         {
-            // add your implementation here
             return this.unitPrice;
         }
         public int getQuantity()
         {
-            // add your implementation here
             return this.quantity;
         }
     }
@@ -166,7 +161,6 @@ namespace ConsoleApp1
         //method to check for valid credit card number input
         public static bool creditCardCheck(long creditCardNumber)
         {
-            // add your implementation here
             // Check if the credit card number is valid
             // For simplicity, let's assume a valid credit card number is between 1000 and 9999
             if (creditCardNumber < 1000 || creditCardNumber > 9999)
@@ -179,14 +173,12 @@ namespace ConsoleApp1
         //method to calculate the final charge after adding taxes, location, charges, etc
         public static double calculateCharge(double unitPrice, int quantity)
         {
-            // add your implementation here
             // Calculate the total charge based on unit price and quantity
             return unitPrice * quantity;
         }
         //method to process the order
         public static void ProcessOrder(Order order)
         {
-            // add your implementation here
             // Process the order and charge the credit card
             Thread.Sleep(200);
             creditCardCheck(order.getCardNo());
@@ -204,7 +196,6 @@ namespace ConsoleApp1
 
         public void agentFun()
         {
-            // add your implementation here
             // Main thread for travel agent
             // it will stop when hotel thread stops
             Console.WriteLine("Starting Travel agent now");
@@ -216,13 +207,11 @@ namespace ConsoleApp1
         }
         public void orderProcessConfirm(Order order, double orderAmount)
         {
-            // add your implementation here
             // Confirm the order and charges
             Console.WriteLine($"Travel Agent {order.getSenderId()}'s order is confirmed. The amount to be charged is ${orderAmount}");
         }
         private void createOrder(string senderId, double unitPrice)
         {
-            // add your implementation here
             Console.WriteLine($"Inside create order");
             // random credit card number and quantity
             Random rnd = new Random();
@@ -238,7 +227,6 @@ namespace ConsoleApp1
         }
         public void agentOrder(double roomPrice, Thread travelAgent) // Callback from hotel thread
         {
-            // add your implementation here
             Thread.Sleep(200);
             // updating room price
             this.roomPrice = roomPrice;
@@ -255,7 +243,6 @@ namespace ConsoleApp1
         public static event PriceCutEvent PriceCut;
         public void hotelFun()
         {
-            // add your implementation here
             while (eventCount < 10)
             {
                 //sleep for 1 second
@@ -276,7 +263,6 @@ namespace ConsoleApp1
         }
         public void updatePrice(double newRoomPrice)
         {
-            // add your implementation here
             double oldPrice = currentRoomPrice;
             currentRoomPrice = newRoomPrice;
 
@@ -293,7 +279,6 @@ namespace ConsoleApp1
         }
         public void takeOrder() // callback from travel agent
         {
-            // add your implementation here
             Order order = MainClass.buffer.GetOneCell();
             if (order != null)
             {
