@@ -1,5 +1,7 @@
 This project is about simulating Hotel rooms booking with multiple agents.
 
+It's architectural pattern is event driven compiting base.
+
 Here I have used event drive Architecture, in C#.
 
 Hotel class simulates pricing and whenever price goes low, all of the agents get notified and order gets placed.
